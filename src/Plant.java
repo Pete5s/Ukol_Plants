@@ -2,11 +2,11 @@ import java.time.LocalDate;
 import java.util.Comparator;
 
 public class Plant implements Comparable<Plant> {
-    private String name;
-    private String notes;
-    private LocalDate planted;
-    private LocalDate watering;
-    private int frequencyOfWatering;
+    private final String name;
+    private final String notes;
+    private final LocalDate planted;
+    private final LocalDate watering;
+    private final int frequencyOfWatering;
 
 
     public Plant(String name, String notes, LocalDate planted, LocalDate watering, int frequencyOfWatering) throws PlantException {
@@ -61,5 +61,11 @@ public class Plant implements Comparable<Plant> {
     @Override
     public int compareTo(Plant other) {
         return this.name.compareTo(other.name);
+    }
+
+    public boolean getWateringInfo() {
+        if (LocalDate.now().isAfter(watering)) return true;
+        else return false;
+
     }
 }

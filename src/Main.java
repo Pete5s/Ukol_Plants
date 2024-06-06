@@ -1,8 +1,7 @@
-import java.io.IOException;
 import java.time.LocalDate;
 
 public class Main {
-    public static void main(String[] args) throws RuntimeException {
+    public static void main(String[] args) {
         try {
             PlantList plantList = new PlantList();
             plantList.loadFromFile("kvetiny.txt");
@@ -35,8 +34,6 @@ public class Main {
 
         } catch (PlantException e) {
             System.err.println("Chyba: " + e.getMessage());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 }
