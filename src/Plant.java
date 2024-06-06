@@ -1,5 +1,4 @@
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 
 public class Plant implements Comparable<Plant> {
@@ -57,39 +56,6 @@ public class Plant implements Comparable<Plant> {
 
     public int getFrequencyOfWatering() {
         return frequencyOfWatering;
-    }
-
-    public void getName(String name) {
-        this.name = name;
-    }
-
-    public void getNotes(String notes) {
-        this.notes = notes;
-    }
-
-    public void getPlanted(LocalDate planted) {
-        this.planted = planted;
-    }
-
-    public void getWatering(LocalDate watering) throws PlantException {
-        if (watering.isBefore(planted)) {
-            throw new PlantException("Datum poslední zálivky nesmí být starší než datum zasazení.");
-        }
-        this.watering = watering;
-    }
-
-    public void getFrequencyOfWatering(int frequencyOfWatering) throws PlantException {
-        if (frequencyOfWatering <= 0) {
-            throw new PlantException("Frekvence zálivky musí být kladné číslo.");
-        }
-        this.frequencyOfWatering = frequencyOfWatering;
-    }
-
-    public String getWateringInfo() {
-        LocalDate nextWateringDate = watering.plusDays(frequencyOfWatering);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        return String.format("Rostlina: %s, Poslední zálivka: %s, Další zálivka: %s",
-                name, watering.format(formatter), nextWateringDate.format(formatter));
     }
 
     @Override
